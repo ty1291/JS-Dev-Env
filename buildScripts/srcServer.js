@@ -8,7 +8,8 @@ var port = 3000;
 var app = express(); // instance of express
 
 app.get('/', function(req, res) { // any references to root
-  res.sendFile(path.join(__dirname, '../src/index.html'));
+  // __dirname: directory name we're currently running in
+  res.sendFile(path.join(__dirname, '../src/index.html')); // send index.html
 });
 
 app.listen(port, function(err) { // listen to port
