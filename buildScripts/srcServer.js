@@ -3,9 +3,18 @@
 var express = require('express');
 import path from 'path';
 import open from 'open';
+import webpack from 'webpack';
+import config from '../webpack.config.dev';
 
 const port = 3000;
 const app = express(); // instance of express
+const compiler = webpack(config);
+
+// express to use webpack-dev-middleware and overwrite defined webpack.config property values
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
 
 app.get('/', function(req, res) { // any references to root
   // __dirname: directory name we're currently running in
