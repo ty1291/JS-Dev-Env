@@ -1,6 +1,6 @@
 import './index.css';
 import numeral from 'numeral';
-import { getUsers } from './api/userApi';
+import { getUsers, deleteUser } from './api/userApi';
 
 const courseValue = numeral(1000).format('$0, 0.00');
 console.log(`I would pay ${courseValue} for this awesome course!`); // eslint-disable-line no-console
@@ -20,4 +20,18 @@ getUsers().then(result => {
   });
 
   global.document.getElementById('users').innerHTML = usersBody;
+
+  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+
+  // Must use array.from to create a real array form a DOM collection
+  // getElementsByClassname only returns an "array like" object
+  Array.from(deleteLinks, link => {
+      link.onclick = function(event) {
+        const element = event.target;
+        event.preventDefault();
+        deleteUser(element.attributes["data-id"].value);
+        const row = element.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      };
+    });
 });
