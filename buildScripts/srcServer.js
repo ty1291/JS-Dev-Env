@@ -22,6 +22,14 @@ app.get('/', function(req, res) { // any references to root
   res.sendFile(path.join(__dirname, '../src/index.html')); // send index.html
 });
 
+app.get('/users', function(req, res) {
+  res.json([
+    {"id": 1, "firstName":"Bob", "lastName": "Smith", "email": "bob@gmail.com" },
+    {"id": 2, "firstName":"Tam", "lastName": "Tim", "email": "tam@gmail.com" },
+    {"id": 3, "firstName":"Jim", "lastName": "Jam", "email": "jim@gmail.com" }
+  ]);
+});
+
 app.listen(port, function(err) { // listen to port
   if (err) {
     console.log(err);
