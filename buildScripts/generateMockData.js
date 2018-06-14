@@ -13,7 +13,8 @@ import chalk from 'chalk';                // colour console text
 
 const json = JSON.stringify(jsf(schema)); // JSF will look at schema and generate randomised mock data
 
-fs.writeFile("./src/api/db.json", json, function (err) { // write results to our DB file
+// write results to auto-generated DB file at location
+fs.writeFile("./src/api/db.json", json, function (err) {
   if (err) {
     return console.log(chalk.red(err));
   } else {
