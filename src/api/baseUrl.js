@@ -1,7 +1,7 @@
 // Determine if in development or not
 // Point to localhost or production api
 export default function getBaseUrl() {
-  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : '/';
+  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'https://infinite-sierra-98634.herokuapp.com/';
 
   // const inDevelopment = window.location.hostname === 'localhost';
   // return inDevelopment ? 'http://localhost:3001/' : '/';
